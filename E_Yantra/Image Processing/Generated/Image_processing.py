@@ -78,16 +78,10 @@ img_rgba.save('flowers_alpha.png')
 
 ########################### -:PART D:- ############################
 
-import imageio
 import cv2
 import numpy as np
-import matplotlib.pyplot as plt
-
-pic = imageio.imread('horse.jpg')
-gray = lambda rgb : np.dot(rgb[... , :3] , [0.299 , 0.587, 0.114]) 
-gray = gray(pic)  
-plt.imshow(gray, cmap = plt.get_cmap(name = 'gray'))
-cv2.imwrite('horse_gray.jpg',gray)   
-    
+image=cv2.imread('horse.jpg')
+I=0.3*image[:,:,2]+ 0.59*image[:,:,1]+ 0.11*image[:,:,0]
+cv2.imwrite('horse_gray.jpg',I)
     
     
