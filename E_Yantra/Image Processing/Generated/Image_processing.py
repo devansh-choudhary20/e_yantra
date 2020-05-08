@@ -66,15 +66,16 @@ cv2.destroyAllWindows()
 import cv2
 import numpy as np
 import os
-import PIL
-# Using PIL:-
 
-from PIL import Image, ImageDraw, ImageFilter
-
-img_rgb = Image.open('flowers.jpg')
-img_rgba = img_rgb.copy()
-img_rgba.putalpha(128)
-img_rgba.save('flowers_alpha.png') 
+flowers=cv2.imread('flowers.jpg')
+image=cv2.cvtColor(flowers,cv2.COLOR_BGR2BGRA)
+image[: ,:, 3]=image[:, :, 3]*0.5
+cv2.imwrite('flowers_alpha.png',image)
+cv2.imshow('image', image)
+x=cv2.imread('flowers_alpha.png')
+cv2.imshow('original',x)
+cv2.waitkey()
+cv2.destroyAllWindows()
 
 ########################### -:PART D:- ############################
 
